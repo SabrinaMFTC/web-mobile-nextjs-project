@@ -1,0 +1,59 @@
+.featureCard {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  border-radius: 14px;
+  background-color: var(--white);
+  box-shadow: var(--shadow-sm);
+  text-align: left;
+}
+
+.featureIconBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+}
+
+.featureIconBox img {
+  width: 20px;
+  height: 20px;
+}
+
+.featureIconBox.heart {
+  background-color: var(--red-light);
+}
+
+.featureIconBox.doacao {
+  background-color: var(--blue-light);
+}
+
+.featureIconBox.castracao {
+  background-color: var(--purple-light);
+}
+
+.featureIconBox.exigencias {
+  background-color: var(--green-light);
+}
+
+.featureIconBox.racas {
+  background-color: var(--orange-light);
+}
+
+.featureIconBox.catsitter {
+  background-color: var(--pink-light);
+}
+
+.featureCard h3 {
+  color: var(--gray-dark);
+  font-size: 1.25rem;
+}
+
+.featureCard p {
+  color: var(--gray);
+  font-size: 1rem;
+  line-height: 1.6;
+}

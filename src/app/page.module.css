@@ -1,0 +1,22 @@
+.features {
+  padding: 56px 0;
+  text-align: center;
+}
+
+.features h2 {
+  margin-bottom: 24px;
+  color: var(--gray-dark);
+  font-size: clamp(1.75rem, 3vw, 2rem);
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+@media (min-width: 768px) {
+  .featuresGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

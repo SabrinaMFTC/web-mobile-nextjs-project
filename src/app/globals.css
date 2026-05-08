@@ -28,7 +28,8 @@
   --yellow-light: #fffbeb;
 
   --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --shadow-header: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-header:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
 
   --radius-sm: 10px;
   --radius-md: 12px;
@@ -37,6 +38,7 @@
 
 * {
   box-sizing: border-box;
+  margin: 0;
 }
 
 body {
@@ -44,4 +46,17 @@ body {
   background-color: var(--background);
   color: var(--gray-dark);
   font-family: "Inter";
+}
+
+.container {
+  width: 100%;
+  max-width: 1086px;
+  margin: 0 auto;
+  padding: 32px 20px;
+}
+
+@media (max-width: 767px) {
+  .container {
+    padding: 24px 16px;
+  }
 }
