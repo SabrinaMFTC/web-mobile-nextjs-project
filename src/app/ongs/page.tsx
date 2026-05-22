@@ -1,12 +1,33 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { OngCard } from "@/components/cards/OngCard/OngCard";
+import type { Ong } from "@/types/ong.type";
 import styles from "./page.module.css";
-import { ongs } from "@/content/ongs";
 
 export default function Page() {
   const [search, setSearch] = useState<string>("");
+  const [ongs, setOngs] = useState<Ong[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    async function loadOngs() {
+      try {
+        setIsLoading(true);
+
+        const response = await fetch("/api/ongs");
+
+        const data: Ong[] = await response.json();
+        setOngs(data);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    loadOngs();
+  }, []);
 
   const filteredOngs = ongs.filter((ong) =>
     ong.nome.toLowerCase().includes(search.toLowerCase()),
@@ -43,6 +64,7 @@ export default function Page() {
       </section>
 
       <section className={styles.ongsList} aria-label="Lista de ONGs">
+        {isLoading && <p>Carregando ONGs...</p>}
         {filteredOngs.map((ong) => (
           <OngCard ong={ong} key={ong.id} />
         ))}

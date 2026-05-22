@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Ong } from "@/types/ong.type";
 import styles from "./card.module.css";
 
@@ -17,28 +18,30 @@ export const OngCard = ({ ong }: OngCardProps) => {
   } = ong;
 
   return (
-    <article className={styles.ongCard}>
-      <h2>{nome}</h2>
+    <Link href={`/ongs/${ong.id}`} className={styles.cardLink}>
+      <article className={styles.ongCard}>
+        <h2>{nome}</h2>
 
-      <p className={styles.ongDescription}>{descricao}</p>
+        <p className={styles.ongDescription}>{descricao}</p>
 
-      <div className={styles.ongInfoGrid}>
-        <p className={styles.ongInfoItem}>
-          📍 {endereco.rua}, {endereco.numero} - {endereco.cidade},{" "}
-          {endereco.estado}
-        </p>
+        <div className={styles.ongInfoGrid}>
+          <p className={styles.ongInfoItem}>
+            📍 {endereco.rua}, {endereco.numero} - {endereco.cidade},{" "}
+            {endereco.estado}
+          </p>
 
-        <p className={styles.ongInfoItem}>📞 {telefone}</p>
+          <p className={styles.ongInfoItem}>📞 {telefone}</p>
 
-        <p className={styles.ongInfoItem}>✉ {email}</p>
+          <p className={styles.ongInfoItem}>✉ {email}</p>
 
-        <p className={styles.ongInfoItem}>🔗 {site}</p>
-      </div>
+          <p className={styles.ongInfoItem}>🔗 {site}</p>
+        </div>
 
-      <div className={styles.ongHours}>
-        <strong>Horário de funcionamento:</strong>
-        <span>{horarioFuncionamento}</span>
-      </div>
-    </article>
+        <div className={styles.ongHours}>
+          <strong>Horário de funcionamento:</strong>
+          <span>{horarioFuncionamento}</span>
+        </div>
+      </article>
+    </Link>
   );
 };

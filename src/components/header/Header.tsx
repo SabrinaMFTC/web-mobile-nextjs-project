@@ -46,6 +46,14 @@ const routes = [
 export const Header = () => {
   const pathname = usePathname();
 
+  const isActiveRoute = (routeLink: string) => {
+    if (routeLink === "/") {
+      return pathname === routeLink;
+    }
+
+    return pathname === routeLink || pathname.startsWith(`${routeLink}/`);
+  };
+
   return (
     <header>
       <div className={styles.logo_bar}>
@@ -61,7 +69,9 @@ export const Header = () => {
         <div className={styles.nav_container}>
           {routes.map((route) => (
             <Link
-              className={pathname === route.link ? styles.nav_box_active : styles.nav_box}
+              className={
+                isActiveRoute(route.link) ? styles.nav_box_active : styles.nav_box
+              }
               href={route.link}
               key={route.label}
             >
